@@ -1,25 +1,11 @@
-# Documentation files
+# Development files
 *.md
 !README.md
-
-# macOS files
-__MACOSX/
 .DS_Store
-
-# Test files
-test-ui.html
-*.test.js
-*.spec.js
-
-# Development files
-babel.config.js
-postcss.config.js
-jsconfig.json
-
-# Temporary files
+__MACOSX/
 *.temporary.compiled.*
 
-# Dependencies (not needed for deployment)
+# Dependencies
 node_modules/
 
 # Git files
