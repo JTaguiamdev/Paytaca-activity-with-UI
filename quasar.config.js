@@ -15,9 +15,7 @@ export default defineConfig((ctx) => {
     ],
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-file#css
-    css: [
-      'app.scss'
-    ],
+    css: [],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
@@ -49,22 +47,7 @@ export default defineConfig((ctx) => {
         node: 'node20'
       },
 
-      // Webpack optimizations for production
-      chainWebpack (chain, { isServer, isClient }) {
-        if (isClient) {
-          // Optimize chunks for better caching
-          chain.optimization.splitChunks({
-            chunks: 'all',
-            cacheGroups: {
-              vendor: {
-                test: /[\\/]node_modules[\\/]/,
-                name: 'vendors',
-                chunks: 'all',
-              }
-            }
-          })
-        }
-      }
+
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-file#devserver
