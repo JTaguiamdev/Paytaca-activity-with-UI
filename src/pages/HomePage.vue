@@ -208,7 +208,7 @@ const resetForm = () => {
 }
 
 .hero-content {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -259,6 +259,7 @@ const resetForm = () => {
   position: relative;
   height: 400px;
   width: 100%;
+  overflow: hidden;
 }
 
 .floating-icon {
