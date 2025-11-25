@@ -12,8 +12,7 @@
     "build": "quasar build",
     "build:vercel": "mkdir -p dist/spa && cp index.html dist/spa/ && cp -r public/* dist/spa/ 2>/dev/null || true",
     "preview": "quasar serve dist/spa --port 8080",
-    "deploy": "npm run build && echo 'Build complete! Upload dist/spa folder to your hosting provider.'",
-    "postinstall": "quasar prepare"
+    "deploy": "npm run build && echo 'Build complete! Upload dist/spa folder to your hosting provider.'"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
