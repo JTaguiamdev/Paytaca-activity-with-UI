@@ -35,32 +35,39 @@ export default defineConfig((ctx) => {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-file#build
     build: {
-      // publicPath: '/',
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
-
-      // webpackTranspile: false,
-
-      // Add dependencies for transpiling with Babel (Array of string/regex)
-      // (from node_modules, which are by default not transpiled).
-      // Applies only if "webpackTranspile" is set to true.
-      // webpackTranspileDependencies: [],
-
+      publicPath: '/',
+      vueRouterMode: 'hash', // hash mode for SPA deployment
+      
+      // Production optimizations
+      minify: true,
+      gzip: true,
+      extractCSS: true,
+      
+      // Modern browser support
       esbuildTarget: {
         browser: [ 'es2022', 'firefox115', 'chrome115', 'safari14' ],
         node: 'node20'
       },
 
-      // rtl: true, // https://quasar.dev/options/rtl-support
-      // showProgress: false,
-      // gzip: true,
-      // analyze: true,
-
-      // Options below are automatically set depending on the env, set them if you want to override
-      // extractCSS: false,
-
-      // https://v2.quasar.dev/quasar-cli-webpack/handling-webpack
-      // "chain" is a webpack-chain object https://github.com/sorrycc/webpack-chain
-      // chainWebpack (/* chain, { isClient, isServer } */) {}
+      // Webpack optimizations for production
+      chainWebpack (chain) {
+        // Optimize chunks for better caching
+        chain.optimization.splitChunks({
+          chunks: 'all',
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+            },
+            cashscript: {
+              test: /[\\/]node_modules[\\/](cashscript|cashc)[\\/]/,
+              name: 'cashscript',
+              chunks: 'all',
+            }
+          }
+        })
+      }
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-file#devserver
@@ -86,12 +93,12 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify', 'Dialog']
     },
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
-    animations: [],
+    animations: ['fadeInUp', 'fadeInDown', 'bounceIn', 'zoomIn'],
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-file#sourcefiles
     // sourceFiles: {

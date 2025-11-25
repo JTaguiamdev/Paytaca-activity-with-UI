@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CashScript UI - Enhanced Preview</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .title {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #1976D2, #42A5F5);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2em;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #1976D2, #42A5F5);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px 12px 0 0;
+            margin: -24px -24px 24px -24px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        
+        .network-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .network-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #1976D2, #42A5F5);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+        }
+        
+        .input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .input:focus {
+            outline: none;
+            border-color: #1976D2;
+            box-shadow: 0 0 10px rgba(25, 118, 210, 0.3);
+        }
+        
+        .qr-container {
+            display: inline-block;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            animation: zoomIn 1s ease-out;
+        }
+        
+        .success-result {
+            background: linear-gradient(135deg, #e8f5e8, #f0fff0);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid #4CAF50;
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.3);
+            backdrop-filter: blur(10px);
+            animation: bounceIn 1s ease-out;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translate3d(0, -40px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 40px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounceIn {
+            from,
+            20%,
+            40%,
+            60%,
+            80%,
+            to {
+                animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(0.97, 0.97, 0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+        
+        @keyframes pulse {
+            from {
+                transform: scale3d(1, 1, 1);
+            }
+            50% {
+                transform: scale3d(1.05, 1.05, 1.05);
+            }
+            to {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translatey(0px);
+            }
+            50% {
+                transform: translatey(-10px);
+            }
+            100% {
+                transform: translatey(0px);
+            }
+        }
+        
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.4s; }
+        .card:nth-child(4) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">🪙 CashScript UI</h1>
+            <p class="subtitle">Interact with Bitcoin Cash Smart Contracts</p>
+        </div>
+        
+        <!-- Network Selection -->
+        <div class="card network-card">
+            <h3>🌐 Network: Chipnet</h3>
+            <p>Switch between Mainnet and Chipnet for testing</p>
+        </div>
+        
+        <!-- Contract Creation -->
+        <div class="card">
+            <div class="card-header">➕ Create Contract Instance</div>
+            <div style="margin: 20px 0;">
+                <label>Seed Parameter:</label><br>
+                <input type="number" class="input" value="12345" placeholder="Enter seed value">
+            </div>
+            <button class="btn">🚀 Create Contract Instance</button>
+        </div>
+        
+        <!-- Contract Details -->
+        <div class="card">
+            <div class="card-header" style="background: linear-gradient(135deg, #9C27B0, #E91E63);">
+                💼 Contract Details
+            </div>
+            <div style="margin: 20px 0;">
+                <label>Contract Address:</label><br>
+                <input type="text" class="input" value="bitcoincash:pz8c0c2..." readonly>
+            </div>
+            <div style="text-align: center; margin: 20px 0;">
+                <div class="qr-container">
+                    <div style="width: 150px; height: 150px; background: linear-gradient(45deg, #f0f0f0, #e0e0e0); display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        📱 QR Code
+                    </div>
+                </div>
+            </div>
+            <div style="background: #f5f5f5; padding: 16px; border-radius: 8px; text-align: center;">
+                <strong>Balance: 50,000 sats (0.0005 BCH)</strong>
+            </div>
+        </div>
+        
+        <!-- Spend Transaction -->
+        <div class="card">
+            <div class="card-header" style="background: linear-gradient(135deg, #FF5722, #FF9800);">
+                💸 Spend Transaction
+            </div>
+            <div style="margin: 20px 0;">
+                <label>Recipient Address:</label><br>
+                <input type="text" class="input" placeholder="bitcoincash:qr2...">
+            </div>
+            <div style="margin: 20px 0;">
+                <label>Password (hint: 87654):</label><br>
+                <input type="number" class="input" placeholder="Enter password">
+            </div>
+            <button class="btn" style="background: linear-gradient(45deg, #FF5722, #FF9800);">
+                📤 Send Transaction
+            </button>
+            
+            <!-- Success Result -->
+            <div class="success-result" style="margin-top: 20px;">
+                <h4 style="color: #4CAF50; margin: 0 0 10px 0;">✅ Transaction Successful!</h4>
+                <p><strong>TX ID:</strong> abc123def456...</p>
+                <button style="background: #1976D2; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer;">
+                    🔍 View in Explorer
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

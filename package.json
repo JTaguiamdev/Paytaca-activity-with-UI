@@ -1,8 +1,8 @@
 {
   "name": "cashscript-ui-exercise",
-  "version": "0.0.1",
-  "description": "An exercise for UI & javascript integration for Cashscript Development",
-  "productName": "Cashscript UI Exercise",
+  "version": "1.0.0",
+  "description": "Modern animated UI for Bitcoin Cash smart contract interactions using CashScript",
+  "productName": "CashScript UI - Modern BCH Smart Contract Interface",
   "author": "khirvy019 <khirvy_19@yahoo.com>",
   "private": true,
   "type": "module",
@@ -10,10 +10,13 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
+    "preview": "quasar serve dist/spa --port 8080",
+    "deploy": "npm run build && echo 'Build complete! Upload dist/spa folder to your hosting provider.'",
     "postinstall": "quasar prepare"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
+    "animate.css": "^4.1.1",
     "cashc": "^0.12.0",
     "cashscript": "^0.12.0",
     "core-js": "^3.31.1",

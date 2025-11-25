@@ -1,1 +1,375 @@
 // app global css in SCSS form
+
+// Custom animations for enhanced UI
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes bounceOut {
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  50%,
+  55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  to {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+// Animation classes
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.fast {
+  animation-duration: 0.5s;
+}
+
+.animated.slow {
+  animation-duration: 2s;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+.fadeInDown {
+  animation-name: fadeInDown;
+}
+
+.fadeOutDown {
+  animation-name: fadeOutDown;
+}
+
+.zoomIn {
+  animation-name: zoomIn;
+}
+
+.zoomOut {
+  animation-name: zoomOut;
+}
+
+.bounceIn {
+  animation-name: bounceIn;
+}
+
+.bounceOut {
+  animation-name: bounceOut;
+}
+
+.pulse {
+  animation-name: pulse;
+}
+
+.shake {
+  animation-name: shake;
+}
+
+// Global styles for modern UI
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.q-page {
+  background: transparent;
+}
+
+// Enhanced card styles with modern glass morphism
+.q-card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: translateY(0px);
+  
+  &:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+      0 16px 40px 0 rgba(31, 38, 135, 0.45),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+// Enhanced button styles with hover-only animations
+.q-btn {
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: translateY(0px);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Enhanced glass input styles
+.q-field {
+  .q-field__control {
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  &.q-field--outlined {
+    .q-field__control {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 
+        0 4px 15px 0 rgba(31, 38, 135, 0.2),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+    }
+    
+    &:hover:not(.q-field--focused) .q-field__control {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(25, 118, 210, 0.4);
+      box-shadow: 
+        0 6px 20px 0 rgba(25, 118, 210, 0.3),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+    }
+    
+    &.q-field--focused .q-field__control {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(25, 118, 210, 0.6);
+      box-shadow: 
+        0 8px 25px 0 rgba(25, 118, 210, 0.4),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+    }
+  }
+  
+  // Hide number input spinners
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+// Loading animations
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+// Success states
+.success-glow {
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+  border: 2px solid #4CAF50;
+}
+
+// Error states
+.error-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+// Gradient text
+.gradient-text {
+  background: linear-gradient(45deg, #1976D2, #42A5F5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Advanced Glass morphism effects
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  box-shadow: 
+    0 12px 35px 0 rgba(31, 38, 135, 0.3),
+    inset 0 2px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 20px 45px 0 rgba(31, 38, 135, 0.4),
+    inset 0 2px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+// Floating animation - only on hover
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-6px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+.float:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+// Pulse animation - only on hover or when active
+.pulse:hover, .pulse.active {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+// Cybersecurity glow effects
+@keyframes cyberpulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(187, 134, 252, 0.6), 0 0 60px rgba(3, 218, 198, 0.3);
+  }
+}
+
+.cyber-glow {
+  animation: cyberpulse 3s ease-in-out infinite;
+}
