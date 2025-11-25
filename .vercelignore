@@ -19,15 +19,8 @@ jsconfig.json
 # Temporary files
 *.temporary.compiled.*
 
-# Source files (since we deploy built files)
-src/
-public/
-
 # Dependencies (not needed for deployment)
 node_modules/
-
-# Config files not needed for deployment
-quasar.config.js
 
 # Git files
 .git/
