@@ -50,23 +50,20 @@ export default defineConfig((ctx) => {
       },
 
       // Webpack optimizations for production
-      chainWebpack (chain) {
-        // Optimize chunks for better caching
-        chain.optimization.splitChunks({
-          chunks: 'all',
-          cacheGroups: {
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              chunks: 'all',
-            },
-            cashscript: {
-              test: /[\\/]node_modules[\\/](cashscript|cashc)[\\/]/,
-              name: 'cashscript',
-              chunks: 'all',
+      chainWebpack (chain, { isServer, isClient }) {
+        if (isClient) {
+          // Optimize chunks for better caching
+          chain.optimization.splitChunks({
+            chunks: 'all',
+            cacheGroups: {
+              vendor: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendors',
+                chunks: 'all',
+              }
             }
-          }
-        })
+          })
+        }
       }
     },
 
