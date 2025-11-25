@@ -10,6 +10,7 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
+    "build:vercel": "echo 'Building for Vercel...' && mkdir dist 2>nul & mkdir dist\\spa 2>nul & copy index.html dist\\spa\\ & xcopy public dist\\spa\\ /E /I /Q 2>nul",
     "preview": "quasar serve dist/spa --port 8080",
     "deploy": "npm run build && echo 'Build complete! Upload dist/spa folder to your hosting provider.'",
     "postinstall": "quasar prepare"
